@@ -16,3 +16,8 @@ class MicrosoftHealth:
     request = r.get('https://api.microsofthealth.net/v1/me/Summaries/daily?', headers={'Authorization': self.token})
     toReturn = json.loads(request.text)
     return toReturn
+
+  def getActivities(self):
+    request = r.get('https://api.microsofthealth.net/v1/me/Activities?', headers={'Authorization': self.token})
+    toReturn = json.loads(request.text)
+    return toReturn
