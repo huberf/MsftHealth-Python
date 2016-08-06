@@ -35,7 +35,6 @@ class MicrosoftHealth:
 
   def verifyToken(self):
     if(time.time() - self.lastToken > 3400):
-      print 'Refreshing token!!'
       self.token = self.getToken()
       self.lastToken = time.time()
 
@@ -63,7 +62,6 @@ class MicrosoftHealth:
     #startDate = formatter.format(start.year, start.month - 1, start.day, start.hour, start.minute)
     startDate = formatter.format(2016, 1, 1, 0, 0)
     request = r.get('https://api.microsofthealth.net/v1/me/Summaries/hourly?startTime=' + startDate + '&endTime=' + endDate, headers={'Authorization': self.token})
-    print request.text
     toReturn = json.loads(request.text)
     return toReturn
 
